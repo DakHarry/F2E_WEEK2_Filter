@@ -13,6 +13,12 @@ namespace f2e_week2_filter.Controllers {
             this.db = _db;
         }
 
+        [HttpGet ("/ReadData")]
+        public IActionResult ReadJsonData() {
+            SpotsData allData = SpotsData.FromJson(System.IO.File.ReadAllText("data.json"));          
+            return Json(allData);
+        }
+
         [HttpGet ("/ImportData")]
         public IActionResult ImortJsonData() {
             SpotsData allData = SpotsData.FromJson(System.IO.File.ReadAllText("data.json"));
